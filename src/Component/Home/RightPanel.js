@@ -2,6 +2,7 @@ import React from 'react'
 import { FcOpenedFolder } from "react-icons/fc"
 import { BiEditAlt } from "react-icons/bi"
 import { IoTrashOutline } from "react-icons/io5"
+import Card from '../Card'
 
 
 const RightPanel = () => {
@@ -28,10 +29,30 @@ const RightPanel = () => {
                         <IoTrashOutline size={"1.5em"} />
                         <h4 className='font-semibold'>
                             <span className='font-semobold text-2xl'>+</span>
-                             New Playground
+                            New Playground
                         </h4>
                     </div>
+
                 </div>
+            </div>
+            <hr className='mb-12 mt-4 bg-black' />
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                <Card>
+                    <div className='flex items-center justify-between'>
+                        <div className='flex gap-4'>
+                            <img src='/logo-small.png' alt='logo' />
+                            <div>
+                                <h4>Stack implementation</h4>
+                                <h4>Language.cpp</h4>
+                            </div>
+                        </div>
+                        <div className='flex gap-4 items-center'>
+                            <BiEditAlt size={"1.5em"} />
+                            <IoTrashOutline size={"1.5em"} />
+                        </div>
+                    </div>
+
+                </Card>
             </div>
         </div>
     )
