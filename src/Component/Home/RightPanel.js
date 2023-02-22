@@ -46,7 +46,7 @@ const RightPanel = () => {
                                 <h4>Language.cpp</h4>
                             </div>
                         </div>
-                        <div className='flex gap-4 items-center'>
+                        <div className=' flex gap-4 items-center'>
                             <BiEditAlt size={"1.5em"} />
                             <IoTrashOutline size={"1.5em"} />
                         </div>
