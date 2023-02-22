@@ -143,7 +143,6 @@ const PlaygroundProvider = ({ children }) => {
     };
 const playgroundFeature={
     folder:folder,
-
     deleteCard:deleteCard,
     deleteFolder:deleteFolder,
     addFolder:addFolder,
@@ -152,12 +151,11 @@ const playgroundFeature={
     editFolderTitle:editFolderTitle,
     editCardTitle:editCardTitle,
     saveplayground:saveplayground,
-    
 }
 
 
     return(
-        <PlaygroundContext.Provider >
+        <PlaygroundContext.Provider value={playgroundFeature}>
             {children}
         </PlaygroundContext.Provider>
     )
