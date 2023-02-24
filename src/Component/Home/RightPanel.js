@@ -17,7 +17,7 @@ const RightPanel = () => {
                 </h4>
 
             </div>
-            <hr className='mb-12 mt-4 bg-black' />
+            <hr className='mb-10 mt-4 bg-black' />
             <div className='flex flex-col my-8'>
                 <div className='flex justify-between items-center'>
                     <div className='flex gap-4 items-center'>
@@ -35,11 +35,11 @@ const RightPanel = () => {
 
                 </div>
             </div>
-            <hr className='mb-12 mt-4 bg-black' />
+            <hr className='mb-10 mt-4 bg-black' />
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <Card>
                     <div className='flex items-center justify-between'>
-                        <div className='flex gap-4'>
+                        <div className='flex gap-3'>
                             <img src='/logo-small.png' alt='logo' />
                             <div>
                                 <h4>Stack implementation</h4>

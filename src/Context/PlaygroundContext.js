@@ -113,7 +113,7 @@ const PlaygroundProvider = ({ children }) => {
                     }
                 }
             };
-            return newStatel
+            return newState
         });
     };
 
@@ -125,7 +125,7 @@ const PlaygroundProvider = ({ children }) => {
         })
     }
 
-    const editCardTitle = (folderID, cardID, newCardTitle) => {
+    const editPlaygroundTitle = (folderID, cardID, newCardTitle) => {
         setFolder((oldState) => {
             const newState = { ...oldState };
             newState[folderID].playgrounds[cardID].title = newCardTitle;
@@ -149,7 +149,7 @@ const playgroundFeature={
     addPlayground:addPlayground,
     addPlaygroundAndFolder:addPlaygroundAndFolder,
     editFolderTitle:editFolderTitle,
-    editCardTitle:editCardTitle,
+    editPlaygroundTitle:editPlaygroundTitle,
     saveplayground:saveplayground,
 }
 
