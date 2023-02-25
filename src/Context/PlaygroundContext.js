@@ -1,163 +1,158 @@
 import { createContext, useState, useEffect } from "react";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 export const PlaygroundContext = createContext();
+
 export const languageMap = {
-    "cpp": {
-        id: 54,
-        defaultCode:
-            "#include <iostream>\n\n"
-            + "using namespace std;\n\n"
-            + "int main(){\n"
-            + '\tcout << "hello world!";\n'
-            + "\treturn 0;\n"
-            + "}"
-    },
-    "java": {
-        id: 62,
-        defaultCode: `public class Main {
-            public static void main(String[] args){
+  cpp: {
+    id: 54,
+    defaultCode:
+      "#include <iostream>\n" +
+      "using namespace std;\n\n" +
+      "int main() {\n" +
+      '\tcout << "Hello World!";\n' +
+      "\treturn 0;\n" +
+      "}",
+  },
+  java: {
+    id: 62,
+    defaultCode: `public class Main {
+            public static void main(String[] args) {
                 System.out.println("Hello World!");
             }
-        }`,
-    },
-    "python": {
-        id: 71,
-        defaultCode: `print("Hello World")`,
-    },
-    "Javascript": {
-        id: 63,
-        defaultCode: `console.log("hello world!")`,
-    }
+    }`,
+  },
+  python: {
+    id: 71,
+    defaultCode: `print("Hello World")`,
+  },
+  javascript: {
+    id: 63,
+    defaultCode: `console.log("Hello World!")`,
+  },
 };
+
 const PlaygroundProvider = ({ children }) => {
-
-    const initialItems = {
+  const initialItems = {
+    [uuid()]: {
+      title: "DSA",
+      playgrounds: {
         [uuid()]: {
-            title: "Stack imp",
-            language: "cpp",
-            code: languageMap["cpp"].defaultCode,
+          title: "Stack imp",
+          language: "cpp",
+          code: languageMap["cpp"].defaultCode,
         },
         [uuid()]: {
-            title: "Array",
-            language: "Javascript",
-            code: languageMap["Javascript"].defaultCode,
+          name: "Array",
+          language: "javascript",
+          code: languageMap["javascript"].defaultCode,
         },
+      },
+    },
+  };
 
-    };
-
-    const [folder, setFolder] = useState(() => {
-        let localData = localStorage.getItem('playgrounds-data');
-        if (localData === null || localData === undefined) {
-            return initialItems;
-        }
-        return JSON.parse(localData)
-    })
-
-    useEffect(() => {
-        localStorage.setItem('playground-data', JSON.stringify(folder))
-
-    }, [folder]);
-
-
-    const deleteCard = (folderID, cardID) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            delete newState[folderID].playgrounds[cardID];
-            return newState;
-        })
+  const [folders, setFolders] = useState(() => {
+    let localData = localStorage.getItem("playgrounds-data");
+    if (localData === null || localData === undefined) {
+      return initialItems;
     }
+    return JSON.parse(localData);
+  });
 
-    const deleteFolder = (folderID) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            delete newState[folderID];
-            return newState;
-        });
-    };
+  useEffect(() => {
+    localStorage.setItem("playgrounds-data", JSON.stringify(folders));
+  }, [folders]);
 
-    const addFolder = (folderName) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[uuid()] = {
-                title: folderName,
-                playgrounds: {},
-            };
-            return newState;
-        });
-    };
+  const deleteCard = (folderId, cardID) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      delete newState[folderId].playgrounds[cardID];
+      return newState;
+    });
+  };
 
-    const addPlayground = (folderID, playgroundName, language) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[folderID].playgrounds[uuid()] = {
-                title: playgroundName,
-                language: language,
-                code: languageMap[language].defaultCode,
-            };
-            return newState;
-        });
-
-    };
-
-    const addPlaygroundAndFolder = (folderName, playgroundName, cardlanguage) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[uuid()] = {
-                title: folderName,
-                playgrounds: {
-                    [uuid()]: {
-                        title: playgroundName,
-                        language: cardlanguage,
-                        code: languageMap[cardlanguage].defaultCode,
-                    }
-                }
-            };
-            return newState
-        });
-    };
-
-    const editFolderTitle = (folderID, newFolderTitle) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[folderID].title = newFolderTitle;
-            return newState;
-        })
-    }
-
-    const editPlaygroundTitle = (folderID, cardID, newCardTitle) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[folderID].playgrounds[cardID].title = newCardTitle;
-            return newState;
-        });
-    };
-
-    const saveplayground = (folderID, cardID, newCode, newLanguage) => {
-        setFolder((oldState) => {
-            const newState = { ...oldState };
-            newState[folderID].playgrounds[cardID].code = newCode;
-            newState[folderID].playgrounds[cardID].language = newLanguage;
-            return newState;
-        });
-    };
-const playgroundFeature={
-    folder:folder,
-    deleteCard:deleteCard,
-    deleteFolder:deleteFolder,
-    addFolder:addFolder,
+  const deleteFolder = (folderId) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      delete newState[folderId];
+      return newState;
+    });
+  };
+  const addFolder = (folderName) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[uuid()] = {
+        title: folderName,
+        playgrounds: {},
+      };
+      return newState;
+    });
+  };
+  const addPlayground = (folderId, playgroundName, language) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[folderId].playgrounds[uuid()] = {
+        title: playgroundName,
+        language: language,
+        code: languageMap[language].defaultCode,
+      };
+      return newState;
+    });
+  };
+  const addPlaygroundAndFolder = (folderName, playgroundName, cardLanguage) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[uuid()] = {
+        title: folderName,
+        playgrounds: {
+          [uuid()]: {
+            title: playgroundName,
+            language: cardLanguage,
+            code: languageMap[cardLanguage].defaultCode,
+          },
+        },
+      };
+      return newState;
+    });
+  };
+  const editFolderTitle = (folderId, newFolderTitle) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[folderId].title = newFolderTitle;
+      return newState;
+    });
+  };
+  const editPlaygroundTitle = (folderId, cardID, newCardTitle) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[folderId].playgrounds[cardID].title = newCardTitle;
+      return newState;
+    });
+  };
+  const savePlayground = (folderId, cardID, newCode, newLanguage) => {
+    setFolders((oldState) => {
+      const newState = { ...oldState };
+      newState[folderId].playgrounds[cardID].code = newCode;
+      newState[folderId].playgrounds[cardID].language = newLanguage;
+      return newState;
+    });
+  };
+  const PlayGroundFeatues={
+    folders:folders,
+    deleteCard: deleteCard,
+    deleteFolder: deleteFolder,
+    addFolder: addFolder,
     addPlayground:addPlayground,
     addPlaygroundAndFolder:addPlaygroundAndFolder,
-    editFolderTitle:editFolderTitle,
-    editPlaygroundTitle:editPlaygroundTitle,
-    saveplayground:saveplayground,
-}
-
-
-    return(
-        <PlaygroundContext.Provider value={playgroundFeature}>
-            {children}
-        </PlaygroundContext.Provider>
-    )
+    editFolderTitle: editFolderTitle,
+    editPlaygroundTitle: editPlaygroundTitle,
+    savePlayground: savePlayground,
+  }
+  return (
+    <PlaygroundContext.Provider value={PlayGroundFeatues}>
+        {children}
+    </PlaygroundContext.Provider>
+  )
 };
-export default PlaygroundProvider
+
+export default PlaygroundProvider;
