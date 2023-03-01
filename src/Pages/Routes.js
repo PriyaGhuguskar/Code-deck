@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
+const Home = React.lazy(() => import('./Home') );
+const PlayGround = React.lazy(() => import('./PlayGround') );
+const Page404 = React.lazy(() => import('./Page404') );
 
-const Home=React.lazy(()=>import('../Pages/Home'));
-const Playground=React.lazy(()=>import('../Pages/Playground'));
-const Page404= React.lazy(()=>import('../Pages/Page404'));
-
-const routes=[
+const routes = [
     {
-        path:"/",
-        component:<Home />
+        path: "/",
+        component: <Home />
     },
     {
-        path:"/code/:folderID/:playgroundID",
-        component:<Playground />
+        path: "/code/:folderId/:playgroundId",
+        component: <PlayGround />
     },
     {
-        path:"*",
-        component:<Page404 />
+        path: "*",
+        component : <Page404 />
     }
 ]
+
 export default routes
