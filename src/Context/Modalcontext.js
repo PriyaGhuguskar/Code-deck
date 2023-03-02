@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 
 export const ModalContext = createContext();
 
+
 function ModalProvider({ children }) {
   const intialModalFields = {
     show: false,
@@ -29,5 +30,6 @@ function ModalProvider({ children }) {
     </ModalContext.Provider>
   );
 }
+
 
 export default ModalProvider;
