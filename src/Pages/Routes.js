@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Home = React.lazy(() => import('./Home') );
-const PlayGround = React.lazy(() => import('./PlayGround') );
+const PlayGround = React.lazy(() => import('./Playground') );
 const Page404 = React.lazy(() => import('./Page404') );
 
 const routes = [

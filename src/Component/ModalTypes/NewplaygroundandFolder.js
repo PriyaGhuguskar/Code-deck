@@ -59,6 +59,7 @@ function NewPlayGroundAndFolder() {
             addPlaygroundAndFolder(folderName, playgroundName, language.value);
             closeModal();
           }}
+          
         >
           Create Folder & PlayGround
         </button>

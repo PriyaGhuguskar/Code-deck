@@ -1,6 +1,6 @@
 
 import { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import routes from './Pages/Routes';
 import ModalProvider from './Context/Modalcontext';
 import PlaygroundProvider from './Context/PlaygroundContext'
