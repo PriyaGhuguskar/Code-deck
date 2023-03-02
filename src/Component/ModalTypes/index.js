@@ -1,12 +1,15 @@
-import EditFolder from './EditFolder'
-import EditPlayground from './EditPlayground'
-import Loading from './Loading'
-import NewFolder from './NewFolder'
-import NewPlayground from './NewPlayground'
-import NewplaygroundandFolder from './NewplaygroundandFolder'
-
-
+import NewFolder from "./NewFolder";
+import NewPlayGround from "./NewPlayGround";
+import NewPlayGroundAndFolder from "./NewPlayGroundAndFolder";
+import EditFolder from "./EditFolder";
+import EditPlayGroundTitle from "./EditPlayGroundTitle";
+import Loading from "./Loading";
 
 export {
-    EditFolder,EditPlayground,Loading,NewFolder,NewPlayground,NewplaygroundandFolder
-}
+  NewFolder,
+  NewPlayGround,
+  NewPlayGroundAndFolder,
+  EditFolder,
+  EditPlayGroundTitle,
+  Loading,
+};
