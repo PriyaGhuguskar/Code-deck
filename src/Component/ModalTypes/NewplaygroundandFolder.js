@@ -60,6 +60,7 @@ function NewPlayGroundAndFolder() {
             closeModal();
           }}
           
+          
         >
           Create Folder & PlayGround
         </button>

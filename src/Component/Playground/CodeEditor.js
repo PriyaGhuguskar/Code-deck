@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror  from "@uiw/react-codemirror";
 
 import { githubDark, githubLight } from "@uiw/codemirror-theme-github";
 import { bespin } from "@uiw/codemirror-theme-bespin";
